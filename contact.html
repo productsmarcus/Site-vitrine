@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact · Ma Pépite Immo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Accueil">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M4 15 L16 5 L28 15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M7 14 V27 H25 V14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+        <path style="stroke:var(--survey)" d="M16 11 V27" stroke-width="2.4" stroke-dasharray="3 3"/>
+        <circle style="fill:var(--survey)" cx="16" cy="27" r="3"/>
+      </svg>
+      <span data-brand>Ma Pépite Immo</span>
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a href="index.html">Accueil</a>
+      <a href="methode.html">Méthode</a>
+      <a href="formules.html">Formules</a>
+      <a href="couverture.html">Couverture</a>
+      <a href="questions.html">Questions</a>
+      <a class="btn btn-primary" href="contact.html" aria-current="page">Mon secteur</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div style="display:grid;gap:18px">
+        <span class="eyebrow" style="color:var(--band-soft)">Disponibilité</span>
+        <h2>Votre secteur est-il encore libre ?</h2>
+        <p class="lede">Indiquez la commune où vous opérez. Nous vous disons quel secteur la couvre et s'il est disponible en exclusivité.</p>
+        <div class="coords mono">
+          <span>Contact : [adresse e-mail à compléter]</span>
+          <span>Téléphone : [à compléter]</span>
+        </div>
+      </div>
+      <form id="dispo" novalidate action="#contact" onsubmit="return false">
+        <label for="f-nom">Nom ou société
+          <input id="f-nom" name="nom" type="text" autocomplete="organization" placeholder="SAS Exemple Patrimoine">
+        </label>
+        <div class="row">
+          <label for="f-commune">Commune principale
+            <input id="f-commune" name="commune" type="text" placeholder="Saint-Germain-en-Laye" required>
+          </label>
+          <label for="f-formule">Formule envisagée
+            <select id="f-formule" name="formule">
+              <option>Exclusivité secteur</option>
+              <option>Flux partagé</option>
+              <option>Lot départemental</option>
+            </select>
+          </label>
+        </div>
+        <label for="f-ops">Opérations réalisées par an
+          <select id="f-ops" name="ops">
+            <option>1 à 2</option>
+            <option selected>3 à 6</option>
+            <option>Plus de 6</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" type="button" id="f-send" style="justify-content:center">Vérifier mon secteur</button>
+        <p class="msg" id="f-msg" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ma Pépite Immo</span>
+    <a href="contact.html">Contact</a>
+    <span>Mentions légales · Carte professionnelle n° [à compléter]</span>
+  </div>
+</footer>
+<script>
+  document.getElementById("f-send").addEventListener("click", () => {
+    const commune = document.getElementById("f-commune").value.trim();
+    const msg = document.getElementById("f-msg");
+    msg.hidden = false;
+    msg.textContent = commune
+      ? "Maquette : la demande pour " + commune + " n'est pas encore envoyée. Le formulaire sera branché à la mise en ligne."
+      : "Indiquez une commune pour vérifier son secteur.";
+  });
+</script>
+</body>
+</html>
